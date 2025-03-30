@@ -93,15 +93,6 @@ public class RepositoryProduct(TestOnlineStoreDBContext context, IRepositoryCate
         return newProduct.Id;
     }
 
-    public async Task DeleteAsync(int id)
-    {
-        var product = await GetByIdAsync(id);
-
-        context.Products.Remove(product);
-        // alternative: context.Remove(product);
-        await context.SaveChangesAsync();
-    }
-
     public async Task UpdateAsync(UpdateProduct product)
     {
         var category = await GetCategoryAsync(product.CategoryId);
@@ -112,6 +103,15 @@ public class RepositoryProduct(TestOnlineStoreDBContext context, IRepositoryCate
         updatedProduct.Price = product.Price;
         updatedProduct.Category = category;
 
+        await context.SaveChangesAsync();
+    }
+
+    public async Task DeleteAsync(int id)
+    {
+        var product = await GetByIdAsync(id);
+
+        context.Products.Remove(product);
+        // alternative: context.Remove(product);
         await context.SaveChangesAsync();
     }
 

@@ -1,4 +1,4 @@
-﻿namespace TestOnlineStore.Persistence.DTO.Category.Queries;
+﻿namespace TestConsoleAppOnlineStore.Category;
 
 public class DetailsCategory
 {

@@ -11,6 +11,6 @@ public interface IRepositoryProduct
     Task<Product> GetByIdAsync(int id);
     Task<DetailsProduct> GetDetailsAsync(int id);
     Task<int> AddAsync(CreateProduct product);
-    Task DeleteAsync(int id);
     Task UpdateAsync(UpdateProduct product);
+    Task DeleteAsync(int id);
 }

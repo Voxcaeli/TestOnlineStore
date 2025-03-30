@@ -1,4 +1,4 @@
-﻿namespace TestOnlineStore.Persistence.DTO.Product.Commands;
+﻿namespace TestConsoleAppOnlineStore.Product;
 
 public class UpdateProduct
 {

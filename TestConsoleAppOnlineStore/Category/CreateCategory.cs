@@ -1,4 +1,4 @@
-﻿namespace TestOnlineStore.Persistence.DTO.Category.Commands;
+﻿namespace TestConsoleAppOnlineStore.Category;
 
 public class CreateCategory
 {

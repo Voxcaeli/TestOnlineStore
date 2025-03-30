@@ -1,13 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TestOnlineStore.Domain;
 using TestOnlineStore.Persistence.Common.Exceptions;
-using TestOnlineStore.Persistence.DTO.Category.Commands;
 using TestOnlineStore.Persistence.DTO.Category.Queries;
 using TestOnlineStore.Persistence.Repositories.Interfaces;
 
 namespace TestOnlineStore.Persistence.Repositories;
 
-public class RepositoryCategory(TestOnlineStoreDBContext context) : IRepositoryCategory
+public class RepositoryCategory(TestOnlineStoreDBContext context)
+    : IRepositoryCategory
 {
     public async Task<List<AllCategory>> GetAllAsync()
     {
@@ -56,14 +56,6 @@ public class RepositoryCategory(TestOnlineStoreDBContext context) : IRepositoryC
         return category.Id;
     }
 
-    public async Task DeleteAsync(int id)
-    {
-        var category = await GetByIdAsync(id);
-
-        context.Categories.Remove(category);
-        await context.SaveChangesAsync();
-    }
-
     public async Task UpdateAsync(Category category)
     {
         var updatedCategory = await GetByIdAsync(category.Id);
@@ -71,6 +63,14 @@ public class RepositoryCategory(TestOnlineStoreDBContext context) : IRepositoryC
         updatedCategory.Name = category.Name;
         updatedCategory.Description = category.Description;
 
+        await context.SaveChangesAsync();
+    }
+
+    public async Task DeleteAsync(int id)
+    {
+        var category = await GetByIdAsync(id);
+
+        context.Categories.Remove(category);
         await context.SaveChangesAsync();
     }
 }
